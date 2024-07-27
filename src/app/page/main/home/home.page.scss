@@ -1,0 +1,45 @@
+/* home.page.scss */
+
+/* Estilo para el botón de cierre de sesión */
+ion-button {
+  --background: #ff4081; /* Color de fondo del botón */
+  --color: #fff; /* Color del texto del botón */
+  --border-radius: 12px; /* Radio de borde para bordes redondeados */
+  --padding: 10px 20px; /* Relleno del botón */
+  --font-size: 16px; /* Tamaño de fuente del texto */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra del botón */
+  --transition: background-color 0.3s ease; /* Transición suave para el fondo */
+  
+  &:hover {
+    --background: #e91e63; /* Color de fondo al pasar el cursor */
+  }
+}
+
+/* Estilo para la cabecera */
+header {
+  background-color: #6200ea; /* Color de fondo de la cabecera */
+  color: #fff; /* Color del texto de la cabecera */
+  text-align: center; /* Alineación del texto */
+  padding: 20px; /* Relleno de la cabecera */
+  font-size: 24px; /* Tamaño de fuente del texto */
+}
+
+/* Estilo para el contenedor principal */
+.main-container {
+  padding: 20px; /* Relleno del contenedor principal */
+}
+
+/* Estilo para las tarjetas de contenido */
+.card {
+  background-color: #fff; /* Color de fondo de la tarjeta */
+  border-radius: 12px; /* Radio de borde para bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  margin-bottom: 20px; /* Margen inferior para separación entre tarjetas */
+  padding: 20px; /* Relleno de la tarjeta */
+  font-size: 16px; /* Tamaño de fuente del texto */
+  transition: transform 0.3s ease; /* Transición suave para la transformación */
+
+  &:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
+  }
+}

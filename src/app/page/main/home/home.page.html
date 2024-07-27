@@ -1,0 +1,55 @@
+<!-- home.page.html -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>WomanFit</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/main/home/config-plan']">
+        Configurar Plan
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="main-container">
+    <div class="card">
+      <h2>Próximo Entrenamiento</h2>
+      <img src="src/imagenes/estiramiento.jpg" alt="Entrenamiento">
+    </div>
+    <div class="card">
+      <h2>Entrenamientos</h2>
+    </div>
+    <div class="card">
+      <h2>Calorias</h2>
+    </div>
+    <div class="card">
+      <h2>Series</h2>
+    </div>
+    <div class="card">
+      <h2>Fuerza</h2>
+    </div>
+    <div class="card">
+      <h2>Consejos</h2>
+    </div>
+  </div>
+</ion-content>
+
+<!-- navegador de paginas principales -->
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/main/home">
+        <ion-icon name="home-outline"></ion-icon>
+        Home
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/main/profile">
+        <ion-icon name="person-outline"></ion-icon>
+        Perfil
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

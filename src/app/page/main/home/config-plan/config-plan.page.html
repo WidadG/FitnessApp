@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Configuracion de Plan</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="savePersonalData()">
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="personalData.name" name="name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Edad</ion-label>
+      <ion-input [(ngModel)]="personalData.age" name="age" type="number" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Peso</ion-label>
+      <ion-input [(ngModel)]="personalData.weight" name="weight" type="number" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Nivel de condición física</ion-label>
+      <ion-select [(ngModel)]="personalData.fitnessLevel" name="fitnessLevel" required>
+        <ion-select-option value="principiante">Principiante</ion-select-option>
+        <ion-select-option value="intermedio">Intermedio</ion-select-option>
+        <ion-select-option value="avanzado">Avanzado</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Objetivos</ion-label>
+      <ion-select [(ngModel)]="personalData.goals" name="goals" required>
+        <ion-select-option value="fuerza">Ganar Fuerza</ion-select-option>
+        <ion-select-option value="condicionFisica">Mejorar Condicion Fisica</ion-select-option>
+        <ion-select-option value="tonificar ">Tonificar Musculo</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button expand="full" type="submit">Guardar</ion-button>
+  </form>
+</ion-content>
+
+<!-- navegador de paginas principales -->
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/main/home">
+        <ion-icon name="home-outline"></ion-icon>
+        Home
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/main/profile">
+        <ion-icon name="person-outline"></ion-icon>
+        Perfil
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
