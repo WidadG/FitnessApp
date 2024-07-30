@@ -19,7 +19,12 @@ const routes: Routes = [
   {
     path: 'home/config-plan',  // Agregar esta ruta
     loadChildren: () => import('./home/config-plan/config-plan.module').then(m => m.ConfigPlanPageModule)
+  },
+  {
+    path: 'buscar-ejercicio',
+    loadChildren: () => import('./buscar-ejercicio/buscar-ejercicio.module').then( m => m.BuscarEjercicioPageModule)
   }
+
 ];
 
 @NgModule({

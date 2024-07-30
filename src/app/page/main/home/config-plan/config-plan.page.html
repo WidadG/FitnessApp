@@ -7,38 +7,54 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- Formulario de datos para generar el plan -->
 <ion-content>
   <form (ngSubmit)="savePersonalData()">
-    <ion-item>
+    <ion-item><!-- Nombre -->
       <ion-label position="floating">Nombre</ion-label>
       <ion-input [(ngModel)]="personalData.name" name="name" required></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item> <!-- edad -->
       <ion-label position="floating">Edad</ion-label>
       <ion-input [(ngModel)]="personalData.age" name="age" type="number" required></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item> <!-- peso en kg -->
       <ion-label position="floating">Peso</ion-label>
       <ion-input [(ngModel)]="personalData.weight" name="weight" type="number" required></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Nivel de condición física</ion-label>
+    <ion-item> <!-- Nivel de expertis -->
+      <ion-label position="floating">Expertis de ejercicios</ion-label>
       <ion-select [(ngModel)]="personalData.fitnessLevel" name="fitnessLevel" required>
         <ion-select-option value="principiante">Principiante</ion-select-option>
         <ion-select-option value="intermedio">Intermedio</ion-select-option>
         <ion-select-option value="avanzado">Avanzado</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item>
+    <ion-item> <!-- Objetivos -->
       <ion-label position="floating">Objetivos</ion-label>
       <ion-select [(ngModel)]="personalData.goals" name="goals" required>
         <ion-select-option value="fuerza">Ganar Fuerza</ion-select-option>
         <ion-select-option value="condicionFisica">Mejorar Condicion Fisica</ion-select-option>
         <ion-select-option value="tonificar ">Tonificar Musculo</ion-select-option>
       </ion-select>
+      <!-- Ingreso del siclo menstrual en calendario -->
+      <ion-item>
+        <ion-label position="floating">Fecha de inicio del último periodo</ion-label>
+        <ion-datetime [(ngModel)]="personalData.inicioCiclo" name="inicioCiclo" displayFormat="MM/DD/YYYY" required></ion-datetime>
+      </ion-item>
+      <!-- Boton para guardar datos -->
     </ion-item>
     <ion-button expand="full" type="submit">Guardar</ion-button>
   </form>
+
+  <ion-card *ngIf="faseMenstrual">
+    <ion-card-header>
+      <ion-card-title>Fase del ciclo menstrual actual</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ faseMenstrual }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 <!-- navegador de paginas principales -->
