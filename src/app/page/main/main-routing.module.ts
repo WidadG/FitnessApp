@@ -23,7 +23,11 @@ const routes: Routes = [
   {
     path: 'buscar-ejercicio',
     loadChildren: () => import('./buscar-ejercicio/buscar-ejercicio.module').then( m => m.BuscarEjercicioPageModule)
+  },  {
+    path: 'ejercicios',
+    loadChildren: () => import('./ejercicios/ejercicios.module').then( m => m.EjerciciosPageModule)
   }
+
 
 ];
 

@@ -5,11 +5,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Buscar</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterExercises()" placeholder="Buscar"></ion-searchbar>
+  
+  <div class="muscle-grid">
+    <ion-card *ngFor="let muscle of filtroMusculo" (click)="goToExercises(muscle.name)">
+      <ion-img [src]="muscle.image"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{ muscle.name }}</ion-card-title>
+
+      </ion-card-header>
+    </ion-card>
+  </div>
 </ion-content>
 
 <!-- navegador de paginas principales -->
