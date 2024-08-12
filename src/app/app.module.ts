@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment.prod';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { VideoService } from './services/video.servise';
 
 @NgModule({
   declarations: [

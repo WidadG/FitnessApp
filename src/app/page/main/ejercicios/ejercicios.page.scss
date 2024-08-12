@@ -1,0 +1,11 @@
+ion-item[slot="header"] {
+    --background: #ffe0e0; /* Cambiar el color de fondo del encabezado */
+    --color: #000; /* Cambiar el color del texto */
+    font-weight: bold; /* Hacer que el texto sea en negrita */
+  }
+  
+  div[slot="content"] {
+    background: rgba(255, 224, 224, 0.25); /* Fondo del contenido */
+    padding: 10px; /* Añadir padding al contenido */
+  }
+  

@@ -9,17 +9,17 @@ import { Router } from '@angular/router';
 export class BuscarEjercicioPage implements OnInit {
 
   searchQuery: string = '';
-  musculos: any[] = [
-    { name: 'Pectorales', image: 'imagenes/pectorales.png'},
-    { name: 'Espalda', image: 'imagenes/espalda.png'},
-    { name: 'Hombros', image: 'imagenes/hombros.png'},
-    { name: 'Bíceps', image: 'imagenes/biceps.png'},
-    { name: 'Tríceps', image: 'imagenes/triceps.png' },
-    { name: 'Cuádriceps', image: 'imagenes/cuadriceps.png'},
-    { name: 'Isquiotibiales', image: 'imagenes/isquiotibiales.png'},
-    { name: 'Glúteos', image: 'imagenes/gluteos.png'},
-    { name: 'Abdominales', image: 'imagenes/abdominales.png'},
-    { name: 'Lumbar', image: 'imagenes/lumbares.png'},
+  musculos: any[] = [ //array de musculos
+    { name: 'Pectorales', image: 'assets/imagenes/pectorales.png'}, //ingresado 3
+    { name: 'Espalda', image: 'imagenes/espalda.png'}, //ingresdo 3
+    { name: 'Hombros', image: 'imagenes/hombros.png'}, //ingresado 3
+    { name: 'Biceps', image: 'imagenes/biceps.png'}, //ingresado 3
+    { name: 'Tríceps', image: 'imagenes/triceps.png' }, //ingresado 3
+    { name: 'Cuádriceps', image: 'imagenes/cuadriceps.png'}, //ingresado 3
+    { name: 'Isquiotibiales', image: 'imagenes/isquiotibiales.png'}, //ingresado 3
+    { name: 'Glúteos', image: 'imagenes/gluteos.png'}, //ingresado 3
+    { name: 'Abdominales', image: 'imagenes/abdominales.png'}, //ingresado 3
+    { name: 'Lumbar', image: 'imagenes/lumbares.png'}, //ingresado 3
 
   ];
   filtroMusculo: any[] = [];

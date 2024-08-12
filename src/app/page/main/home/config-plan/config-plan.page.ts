@@ -31,6 +31,7 @@ export class ConfigPlanPage implements OnInit {
     if (userId) {
       this.firebaseService.setDocument(`users/${userId}`, this.personalData).then(() => {
         console.log('Los datos se han subido exitosamente');
+        //Falta llamar a la funcion
       }).catch((error) => {
         console.error('Error al subir los datos: ', error);
       });
