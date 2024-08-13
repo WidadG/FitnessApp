@@ -25,7 +25,7 @@ const routes: Routes = [
     loadChildren: () => import('./buscar-ejercicio/buscar-ejercicio.module').then( m => m.BuscarEjercicioPageModule)
   },
   {
-    path: 'ejercicios/:musculo', //revisar variable
+    path: 'ejercicios/:musculo',// revisar
     loadChildren: () => import('./ejercicios/ejercicios.module').then( m => m.EjerciciosPageModule)
   }
 

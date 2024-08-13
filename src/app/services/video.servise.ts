@@ -19,8 +19,11 @@ export class VideoService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  getVideos(): Observable<Video[]> {
-    return this.firestore.collection<Video>(this.collectionName).valueChanges({ idField: 'id' });
+  //getVideos(): Observable<Video[]> {
+  // return this.firestore.collection<Video>(this.collectionName).valueChanges({ idField: 'id' });
+  //}
+  getVideosMusculos(musculo: string): Observable<Video[]> { //Obtencion de videos ya filtrados en Firebse por musculo
+    return this.firestore.collection<Video>(this.collectionName, ref => ref.where('musculo', '==', musculo)).valueChanges({ idField: 'id' });
   }
 
   addVideo(video: Video): Promise<void> {

@@ -15,7 +15,7 @@
   <div class="main-container">
     <div class="card">
       <h2>Próximo Entrenamiento</h2>
-      <img src="src/imagenes/estiramiento.jpg" alt="Entrenamiento">
+      <img src="src/assets/imagenes/estiramiento.jpg" alt="Entrenamiento">
     </div>
     <div class="card">
       <h2>Entrenamientos</h2>
@@ -36,26 +36,20 @@
 </ion-content>
 
 <!-- navegador de paginas principales -->
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button routerLink="/main/home">
+<!-- Revisar -->
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" routerLink="/main/home">
         <ion-icon name="home"></ion-icon>
         Home
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button routerLink="/main/buscar-ejercicio">
+    </ion-tab-button>
+    <ion-tab-button tab="search" routerLink="/main/buscar-ejercicio">
         <ion-icon name="search"></ion-icon>
-        Buscar
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/main/profile">
+        Buscar 
+    </ion-tab-button>
+    <ion-tab-button tab="profile" routerLink="/main/profile">
         <ion-icon name="person"></ion-icon>
-        Profile
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>
+        Perfil
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
