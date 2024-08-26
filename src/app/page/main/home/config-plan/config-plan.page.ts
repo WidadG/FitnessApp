@@ -22,21 +22,26 @@ export class ConfigPlanPage implements OnInit {
   constructor(private firebaseService: FirebaseService, private router: Router) {}
 
   ngOnInit() {
+    // Cálculo inicial de la fase menstrual
     this.calcularFaseMenstrual();
   }
   
-
   async savePersonalData() {
     const userId = (await this.firebaseService.getAuth().currentUser)?.uid;
     if (userId) {
       this.firebaseService.setDocument(`users/${userId}`, this.personalData).then(() => {
         console.log('Los datos se han subido exitosamente');
-        //Falta llamar a la funcion
+        // Recalcular la fase menstrual
+        this.calcularFaseMenstrual();
+        // Redirigir al usuario a la página de entrenamiento
+        this.router.navigate(['./entrenamiento'], { queryParams: { fase: this.faseMenstrual } });
+
+
       }).catch((error) => {
         console.error('Error al subir los datos: ', error);
       });
     } else {
-      console.error('El usuario no esta logeado');
+      console.error('El usuario no está logueado');
     }
   }
 
@@ -62,6 +67,4 @@ export class ConfigPlanPage implements OnInit {
       this.faseMenstrual = 'Fecha de inicio del periodo no seleccionada';
     }
   }
-  
 }
-

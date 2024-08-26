@@ -25,9 +25,16 @@ const routes: Routes = [
     loadChildren: () => import('./buscar-ejercicio/buscar-ejercicio.module').then( m => m.BuscarEjercicioPageModule)
   },
   {
-    path: 'ejercicios/:musculo',// revisar
+    path: 'ejercicios/:musculo', //revisar variable
     loadChildren: () => import('./ejercicios/ejercicios.module').then( m => m.EjerciciosPageModule)
+  },
+ {
+    path: 'entrenamiento',
+    loadChildren: () => import('./entrenamiento/entrenamiento.module').then(m => m.EntrenamientoPageModule)
   }
+
+  
+
 
 
 ];

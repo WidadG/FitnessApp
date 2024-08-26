@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/main/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Entrenamiento Personalizado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="personalizedExercises.length > 0; else noExercises">
+    <ion-card-header>
+      <ion-card-title>{{ faseMenstrual }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let video of personalizedExercises">
+          <ion-thumbnail slot="start">
+            <img [src]="video.thumbnail || 'assets/default-thumbnail.jpg'" alt="{{video.titulo}}">
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ video.titulo }}</h2>
+            <p>{{ video.descripcion }}</p>
+          </ion-label>
+          <ion-button fill="outline" slot="end" (click)="playVideo(video)">
+            Ver Video
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+      <!-- Aquí se muestra el video si uno está seleccionado -->
+      <div *ngIf="selectedVideo">
+        <h2>{{ selectedVideo.titulo }}</h2>
+        <iframe width="100%" height="315" [src]="videoUrl" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ng-template #noExercises>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Sin ejercicios disponibles</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        No se encontraron ejercicios para la fase menstrual actual.
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
+</ion-content>

@@ -1,45 +1,134 @@
-/* home.page.scss */
+/* Variables de color */
+$primary-color: hsl(340, 100%, 63%);  /* Rosa */
+$secondary-color: #FFC107; /* Amarillo */
+$background-color: #F5F5F5; /* Fondo claro */
+$text-color: #333333; /* Texto oscuro */
+$highlight-color: #00BCD4; /* Azul para acentos */
 
-/* Estilo para el botón de cierre de sesión */
-ion-button {
-  --background: #ff4081; /* Color de fondo del botón */
-  --color: #fff; /* Color del texto del botón */
-  --border-radius: 12px; /* Radio de borde para bordes redondeados */
-  --padding: 10px 20px; /* Relleno del botón */
-  --font-size: 16px; /* Tamaño de fuente del texto */
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra del botón */
-  --transition: background-color 0.3s ease; /* Transición suave para el fondo */
-  
-  &:hover {
-    --background: #e91e63; /* Color de fondo al pasar el cursor */
+ion-header {
+  ion-toolbar {
+    background-color: rgb(255, 242, 102);
+    ion-title {
+      color: $text-color;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: left;
+    }
+    ion-button {
+      --background: $highlight-color;
+      --color: rgb(210, 210, 210);
+      border-radius: 10px;
+      font-size: 14px;
+      padding: 6px 12px;
+    }
   }
 }
 
-/* Estilo para la cabecera */
-header {
-  background-color: #6200ea; /* Color de fondo de la cabecera */
-  color: #fff; /* Color del texto de la cabecera */
-  text-align: center; /* Alineación del texto */
-  padding: 20px; /* Relleno de la cabecera */
-  font-size: 24px; /* Tamaño de fuente del texto */
-}
+ion-content {
+  --background: $background-color;
+  padding: 16px;
 
-/* Estilo para el contenedor principal */
-.main-container {
-  padding: 20px; /* Relleno del contenedor principal */
-}
-
-/* Estilo para las tarjetas de contenido */
-.card {
-  background-color: #fff; /* Color de fondo de la tarjeta */
-  border-radius: 12px; /* Radio de borde para bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
-  margin-bottom: 20px; /* Margen inferior para separación entre tarjetas */
-  padding: 20px; /* Relleno de la tarjeta */
-  font-size: 16px; /* Tamaño de fuente del texto */
-  transition: transform 0.3s ease; /* Transición suave para la transformación */
-
-  &:hover {
-    transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
+  .cycle-card {
+    background-color: $primary-color;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .cycle-button {
+      --background: white;
+      --color: $primary-color;
+      font-weight: bold;
+    }
+  }
+
+  .insights-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 90%;
+  }
+
+  .insight-card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    h4 {
+      font-size: 16px;
+      font-weight: bold;
+      color: $primary-color;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: $text-color;
+    }
+
+    img {
+      border-radius: 10px;
+      width: 100%;
+      height: auto;
+    }
+  }
+  /* ... (resto del CSS que ya tienes) ... */
+
+.insight-card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    color: $text-color;
+  }
+
+  img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+  }
+
+  .card-button {
+    --background: $primary-color;
+    --color: hsl(340, 100%, 63%);
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 12px;
+    width: 100%;
+  }
+}
+
 }

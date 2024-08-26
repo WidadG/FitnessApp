@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-buscar-ejercicio',
   templateUrl: './buscar-ejercicio.page.html',
@@ -14,10 +15,10 @@ export class BuscarEjercicioPage implements OnInit {
     { name: 'Espalda', image: 'assets/imagenes/espalda.png'}, //ingresdo 3
     { name: 'Hombros', image: 'assets/imagenes/hombros.png'}, //ingresado 3
     { name: 'Biceps', image: 'assets/imagenes/biceps.png'}, //ingresado 3
-    { name: 'Triceps', image: 'assets/imagenes/triceps.png' }, //ingresado 3
-    { name: 'Cuadriceps', image: 'assets/imagenes/cuadriceps.png'}, //ingresado 3
+    { name: 'Tríceps', image: 'assets/imagenes/triceps.png' }, //ingresado 3
+    { name: 'Cuádriceps', image: 'assets/imagenes/cuadriceps.png'}, //ingresado 3
     { name: 'Isquiotibiales', image: 'assets/imagenes/isquiotibiales.png'}, //ingresado 3
-    { name: 'Gluteos', image: 'assets/imagenes/gluteos.png'}, //ingresado 3
+    { name: 'Glúteos', image: 'assets/imagenes/gluteos.png'}, //ingresado 3
     { name: 'Abdominales', image: 'assets/imagenes/abdominales.png'}, //ingresado 3
     { name: 'Lumbar', image: 'assets/imagenes/lumbares.png'}, //ingresado 3
 

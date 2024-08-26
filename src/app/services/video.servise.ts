@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/compat/firestore";
+import { Observable } from "rxjs";
 
 export interface Video {
   id?: string;
   titulo: string;
   url: string;
   descripcion?: string;
-  musculo: string
-  desplegarVideo?: boolean
+  musculo: string;
+  desplegarVideo?: boolean;
+  thumbnail?: string;
 }
 
 @Injectable({
@@ -19,11 +20,8 @@ export class VideoService {
 
   constructor(private firestore: AngularFirestore) { }
 
-  //getVideos(): Observable<Video[]> {
-  // return this.firestore.collection<Video>(this.collectionName).valueChanges({ idField: 'id' });
-  //}
-  getVideosMusculos(musculo: string): Observable<Video[]> { //Obtencion de videos ya filtrados en Firebse por musculo
-    return this.firestore.collection<Video>(this.collectionName, ref => ref.where('musculo', '==', musculo)).valueChanges({ idField: 'id' });
+  getVideos(): Observable<Video[]> {
+    return this.firestore.collection<Video>(this.collectionName).valueChanges({ idField: 'id' });
   }
 
   addVideo(video: Video): Promise<void> {

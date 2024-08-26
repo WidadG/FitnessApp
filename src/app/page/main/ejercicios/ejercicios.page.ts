@@ -18,8 +18,9 @@ export class EjerciciosPage implements OnInit {
 
   ngOnInit() {
     this.musculo = this.route.snapshot.paramMap.get('musculo');
-    this.videoService.getVideosMusculos(this.musculo).subscribe((videos) => { //consulta a firebase directamente con un filtro
-      this.exercises = videos;
+    this.videoService.getVideos().subscribe((videos) => {
+      console.log(videos); // Añade esto para ver los datos en la consola
+      this.exercises = videos.filter(video => video.musculo === this.musculo);
       console.log(this.exercises); // Verifica los ejercicios filtrados
     });
   }

@@ -6,12 +6,15 @@ import { IonicModule } from '@ionic/angular';
 import { ConfigPlanPageRoutingModule } from './config-plan-routing.module';
 import { ConfigPlanPage } from './config-plan.page';
 
+import { EntrenamientoPageModule } from '../../entrenamiento/entrenamiento.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ConfigPlanPageRoutingModule
+    ConfigPlanPageRoutingModule,
+    EntrenamientoPageModule
   ],
   declarations: [ConfigPlanPage]
 })

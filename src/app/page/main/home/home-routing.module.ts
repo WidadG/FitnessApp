@@ -7,10 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage
-  },  {
+  },
+  {
     path: 'config-plan',
     loadChildren: () => import('./config-plan/config-plan.module').then( m => m.ConfigPlanPageModule)
-  }
+  },
+  {
+    path: 'entrenamiento',
+    loadChildren: () => import('src/app/page/main/entrenamiento/entrenamiento.module').then(m => m.EntrenamientoPageModule)
+  },
 
 ];
 

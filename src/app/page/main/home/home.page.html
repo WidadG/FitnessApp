@@ -1,5 +1,3 @@
-<!-- home.page.html -->
-
 <ion-header>
   <ion-toolbar>
     <ion-title>WomanFit</ion-title>
@@ -13,43 +11,72 @@
 
 <ion-content>
   <div class="main-container">
+    
+    <!-- Ciclo Principal y Próximo Entrenamiento -->
+    <div class="cycle-card">
+      <h2>Día del ciclo: {{ cycleDay }}</h2>
+      <h3>{{ cyclePhase }}</h3>
+      <ion-button expand="full" class="cycle-button" routerLink="/main/cycle-details">
+        Ver Detalles
+      </ion-button>
+    </div>
+    
     <div class="card">
       <h2>Próximo Entrenamiento</h2>
-      <img src="src/assets/imagenes/estiramiento.jpg" alt="Entrenamiento">
+      <img src="assets/imagenes/estiramiento.jpg" alt="Entrenamiento">
     </div>
-    <div class="card">
-      <h2>Entrenamientos</h2>
+    
+    <!-- Tarjetas de insights y botones -->
+    <div class="insights-container">
+      <div class="insight-card">
+        <h4>Calorías</h4>
+        <p>{{ calorias }} kcal</p>
+      </div>
+      <div class="insight-card">
+        <h4>Series</h4>
+        <p>{{ series }} series</p>
+      </div>
+      <div class="insight-card">
+        <h4>Fuerza</h4>
+        <p>{{ fuerza }}%</p>
+      </div>
+      <div class="insight-card">
+        <h4>Consejos</h4>
+        <p>{{ consejos }}</p>
+      </div>
+      <div class="insight-card">
+        <h4></h4>
+        <ion-button expand="block" class="card-button" routerLink="/main/entrenamiento">
+          <ion-icon name="fitness-outline"></ion-icon>
+          Entrenamiento 
+        </ion-button>
+      </div>
+      
     </div>
-    <div class="card">
-      <h2>Calorias</h2>
-    </div>
-    <div class="card">
-      <h2>Series</h2>
-    </div>
-    <div class="card">
-      <h2>Fuerza</h2>
-    </div>
-    <div class="card">
-      <h2>Consejos</h2>
-    </div>
+    
   </div>
 </ion-content>
 
-<!-- navegador de paginas principales -->
-<!-- Revisar -->
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home" routerLink="/main/home">
+<!-- Navegación inferior -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/main/home">
         <ion-icon name="home"></ion-icon>
         Home
-    </ion-tab-button>
-    <ion-tab-button tab="search" routerLink="/main/buscar-ejercicio">
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/main/buscar-ejercicio">
         <ion-icon name="search"></ion-icon>
-        Buscar 
-    </ion-tab-button>
-    <ion-tab-button tab="profile" routerLink="/main/profile">
+        Buscar
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/main/profile">
         <ion-icon name="person"></ion-icon>
-        Perfil
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+        Profile
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
