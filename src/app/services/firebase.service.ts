@@ -64,4 +64,14 @@ async getDocument(path: string){
   return (await getDoc(doc(getFirestore(), path))).data();
 
 }
+
+async getConsejoByFase(fase: string) {
+  const querySnapshot = await this.firestore.collection('consejos', ref => ref.where('etapaCiclo', '==', fase)).get().toPromise();
+  if (!querySnapshot.empty) {
+    return querySnapshot.docs[0].data();
+  } else {
+    return null;
+  }
+}
+
 }

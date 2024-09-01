@@ -10,19 +10,26 @@
 <!-- Formulario de datos para generar el plan -->
 <ion-content>
   <form (ngSubmit)="savePersonalData()">
-    <ion-item><!-- Nombre -->
+    <!-- Nombre -->
+    <ion-item>
       <ion-label position="floating">Nombre</ion-label>
       <ion-input [(ngModel)]="personalData.name" name="name" required></ion-input>
     </ion-item>
-    <ion-item> <!-- edad -->
+
+    <!-- Edad -->
+    <ion-item>
       <ion-label position="floating">Edad</ion-label>
       <ion-input [(ngModel)]="personalData.age" name="age" type="number" required></ion-input>
     </ion-item>
-    <ion-item> <!-- peso en kg -->
+
+    <!-- Peso en kg -->
+    <ion-item>
       <ion-label position="floating">Peso</ion-label>
       <ion-input [(ngModel)]="personalData.weight" name="weight" type="number" required></ion-input>
     </ion-item>
-    <ion-item> <!-- Nivel de expertis -->
+
+    <!-- Nivel de expertis -->
+    <ion-item>
       <ion-label position="floating">Expertis de ejercicios</ion-label>
       <ion-select [(ngModel)]="personalData.fitnessLevel" name="fitnessLevel" required>
         <ion-select-option value="principiante">Principiante</ion-select-option>
@@ -30,24 +37,54 @@
         <ion-select-option value="avanzado">Avanzado</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item> <!-- Objetivos -->
+
+    <!-- Objetivos -->
+    <ion-item>
       <ion-label position="floating">Objetivos</ion-label>
       <ion-select [(ngModel)]="personalData.goals" name="goals" required>
         <ion-select-option value="fuerza">Ganar Fuerza</ion-select-option>
         <ion-select-option value="condicionFisica">Mejorar Condicion Fisica</ion-select-option>
-        <ion-select-option value="tonificar ">Tonificar Musculo</ion-select-option>
+        <ion-select-option value="tonificar">Tonificar Musculo</ion-select-option>
       </ion-select>
-      <!-- Ingreso del siclo menstrual en calendario -->
-      <ion-item>
-        <ion-label position="floating">Fecha de inicio del último periodo</ion-label>
-        <ion-datetime [(ngModel)]="personalData.inicioCiclo" name="inicioCiclo" displayFormat="MM/DD/YYYY" required></ion-datetime>
-      </ion-item>
-      <!-- Boton para guardar datos -->
     </ion-item>
-    <ion-button routerLink="/main/entrenamiento" expand="full" type="submit">Guardar</ion-button>   
 
+    <!-- Días de entrenamiento -->
+    <ion-item>
+      <ion-label position="floating">Días de Entrenamiento</ion-label>
+      <ion-select [(ngModel)]="personalData.diasEntrenamiento" name="diasEntrenamiento" required>
+        <ion-select-option value="3">3 días</ion-select-option>
+        <ion-select-option value="4">4 días</ion-select-option>
+        <ion-select-option value="5">5 días</ion-select-option>
+      </ion-select>
+    </ion-item>
 
+    <!-- Ingreso del ciclo menstrual en calendario -->
+    <!-- Botón para mostrar el calendario -->
+    <ion-item>
+      <ion-label>Fecha de inicio del último periodo</ion-label>
+      <ion-datetime-button datetime="datetime"></ion-datetime-button>
+    </ion-item>
+
+    <!-- Modal con el calendario -->
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime
+          id="datetime"
+          [(ngModel)]="personalData.inicioCiclo"
+          name="inicioCiclo"
+          presentation="date"
+          displayFormat="MM/DD/YYYY"
+          required>
+        </ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+    <!-- Botón para guardar datos -->
+    <div class="button-container">
+      <ion-button routerLink="/main/entrenamiento" type="submit">Guardar</ion-button>
+    </div>
   </form>
+
 
   <ion-card *ngIf="faseMenstrual">
     <ion-card-header>

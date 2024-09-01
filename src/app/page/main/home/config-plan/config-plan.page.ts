@@ -15,7 +15,8 @@ export class ConfigPlanPage implements OnInit {
     fitnessLevel: '',
     goals: '',
     inicioCiclo: '',
-    faseMenstrual: ''
+    faseMenstrual: '',
+    diasEntrenamiento: 3 // Valor predeterminado de 3 días
   };
 
   faseMenstrual: string = '';
