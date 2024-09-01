@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TrainingService {
-  constructor() {}
+  constructor(private firestore: AngularFirestore) {}
 
+  // Métodos para obtener entrenamiento por fase menstrual
   getEntrenamientoPorFase(faseMenstrual: string): any {
     switch (faseMenstrual) {
       case 'Fase Folicular A - Menstruación':
@@ -54,5 +56,10 @@ export class TrainingService {
       nombre: 'Entrenamiento General',
       ejercicios: ['Pectorales'],
     };
+  }
+
+  // Método para guardar un entrenamiento en Firebase
+  guardarEntrenamiento(userId: string, entrenamiento: any) {
+    return this.firestore.collection(`users/${userId}/entrenamientos`).add(entrenamiento);
   }
 }

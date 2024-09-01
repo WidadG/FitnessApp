@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/main/entrenamiento"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Entrenando</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Contador de tiempo -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Tiempo Transcurrido: {{ duration | date:'mm:ss' }} </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <!-- Lista de ejercicios en acordeón -->
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let ejercicio of personalizedExercises">
+      <ion-item slot="header" color="light">
+        <ion-label>{{ ejercicio.titulo }}</ion-label>
+      </ion-item>
+      <ion-item slot="content">
+        <iframe width="100%" height="315" [src]="getSafeUrl(ejercicio.url)" frameborder="0" allowfullscreen></iframe>
+      </ion-item>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <!-- Botón para finalizar entrenamiento -->
+  <ion-button expand="full" (click)="finishTraining()">Finalizar Entrenamiento</ion-button>
+
+</ion-content>

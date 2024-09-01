@@ -10,6 +10,8 @@ export interface Video {
   musculo: string;
   desplegarVideo?: boolean;
   thumbnail?: string;
+  series: number;
+  reps: number;
 }
 
 @Injectable({
