@@ -38,6 +38,7 @@ export class EntrenamientoPage implements OnInit {
     });
   }
 
+  //Funcion que genera entrenamiento
   loadPersonalizedExercises() {
     this.videoService.getVideos().subscribe((videos) => {
       // Filtra los videos basados en los ejercicios devueltos por el TrainingService
@@ -56,31 +57,6 @@ export class EntrenamientoPage implements OnInit {
     });
   }
 
-  //finishTraining() {
-  //  const endTime = new Date();
-  //  const duration = (endTime.getTime() - this.startTime.getTime()) / 1000; // en segundos
-
-  //  const entrenamiento = {
-  //    startTime: this.startTime,
-  //    endTime: endTime,
-  //    duration: duration,
-  //    faseMenstrual: this.faseMenstrual,
-  //    ejercicios: this.personalizedExercises
-  //  };
-
-  //  this.afAuth.user.subscribe(user => {
-  //    if (user) {
-  //      this.trainingService.guardarEntrenamiento(user.uid, entrenamiento)
-  //        .then(() => {
-  //          console.log('Entrenamiento guardado exitosamente.');
-  //        })
-  //        .catch(error => {
-  //          console.error('Error al guardar el entrenamiento:', error);
-  //        });
-  //    }
-  //  });
-  //}
-  
   playVideo(video: Video) {
     this.selectedVideo = video;  
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(video.url.replace("watch?v=", "embed/"));

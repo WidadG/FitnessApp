@@ -58,6 +58,16 @@
       </ion-select>
     </ion-item>
 
+    <!-- Modo de entrenamiento -->
+    <ion-item>
+      <ion-label position="floating">Modo de Entrenamiento</ion-label>
+      <ion-select [(ngModel)]="personalData.modoEntrenamiento" name="modoEntrenamiento" required>
+        <ion-select-option value="modoCuerpoCompleto">Cuerpo Completo</ion-select-option>
+        <ion-select-option value="modoSuperiorInferior">Superior e Inferior</ion-select-option>
+        <ion-select-option value="modoJalarEmpujarPiernas">Jalar, Empujar y Piernas</ion-select-option>
+      </ion-select>
+    </ion-item>
+
     <!-- Ingreso del ciclo menstrual en calendario -->
     <!-- Botón para mostrar el calendario -->
     <ion-item>

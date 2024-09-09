@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -60,6 +61,17 @@ export class TrainingService {
 
   // Método para guardar un entrenamiento en Firebase
   guardarEntrenamiento(userId: string, entrenamiento: any) {
-    return this.firestore.collection(`users/${userId}/entrenamientos`).add(entrenamiento);
+    return this.firestore.collection('users').doc(userId).collection('entrenamientos').add(entrenamiento);
+  }
+
+  getEntrenamientos(userId: string): Observable<any[]> {
+    return this.firestore.collection(`users/${userId}/entrenamientos`).valueChanges();
+    
+  }
+  getHistorialEntrenamientos(userId: string) {
+    return this.firestore.collection('users').doc(userId).collection('entrenamientos').valueChanges();
   }
 }
+
+
+  

@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial de Entrenamientos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let entrenamiento of entrenamientos">
+      <ion-label>
+        <h2>{{ entrenamiento.endTime | date:'short' }}</h2>
+        <p>Fase: {{ entrenamiento.faseMenstrual }}</p>
+        <p>Duración: {{ entrenamiento.duration | number:'1.0-0' }} segundos</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

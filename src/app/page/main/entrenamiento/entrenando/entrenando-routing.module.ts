@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
+
 import { EntrenandoPage } from './entrenando.page';
 
 const routes: Routes = [

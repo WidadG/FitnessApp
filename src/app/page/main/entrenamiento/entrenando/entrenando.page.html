@@ -9,12 +9,8 @@
 
 <ion-content>
 
-  <!-- Contador de tiempo -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Tiempo Transcurrido: {{ duration | date:'mm:ss' }} </ion-card-title>
-    </ion-card-header>
-  </ion-card>
+
+
 
   <!-- Lista de ejercicios en acordeón -->
   <ion-accordion-group>
@@ -25,10 +21,32 @@
       <ion-item slot="content">
         <iframe width="100%" height="315" [src]="getSafeUrl(ejercicio.url)" frameborder="0" allowfullscreen></iframe>
       </ion-item>
+      <ion-item slot="content">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">Set</ion-col>
+            <ion-col size="4">Anterior</ion-col>
+            <ion-col size="3">Kg</ion-col>
+            <ion-col size="2">Reps</ion-col>
+            <ion-col size="1">✔</ion-col>
+          </ion-row>
+          <ion-row *ngFor="let set of ejercicio.sets; let i = index">
+            <ion-col size="2">{{ i + 1 }}</ion-col>
+            <ion-col size="4"><ion-input [(ngModel)]="set.anterior" type="text" placeholder="12kg x 8"></ion-input></ion-col>
+            <ion-col size="3"><ion-input [(ngModel)]="set.kg" type="number" placeholder="-"></ion-input></ion-col>
+            <ion-col size="2"><ion-input [(ngModel)]="set.reps" type="number" placeholder="-"></ion-input></ion-col>
+            <ion-col size="1"><ion-checkbox [(ngModel)]="set.completed"></ion-checkbox></ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-button expand="block" (click)="addSet(ejercicio)">Agregar Set</ion-button>
+      </ion-item>
     </ion-accordion>
   </ion-accordion-group>
-
+  
   <!-- Botón para finalizar entrenamiento -->
-  <ion-button expand="full" (click)="finishTraining()">Finalizar Entrenamiento</ion-button>
+  <ion-button expand="full" color="primary" (click)="finishTraining()">Finalizar Entrenamiento</ion-button>
+
+
 
 </ion-content>
