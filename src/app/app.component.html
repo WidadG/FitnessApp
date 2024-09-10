@@ -1,3 +1,25 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
-</ion-app>
+
+<!-- navegador de paginas principales -->
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer-buttons">
+      <ion-button routerLink="/main/home">
+        <ion-icon name="home"></ion-icon>
+        Home
+      </ion-button>
+
+      <ion-button routerLink="/main/buscar-ejercicio">
+        <ion-icon name="search"></ion-icon>
+        Buscar
+      </ion-button>
+
+      <ion-button routerLink="/main/profile">
+        <ion-icon name="person"></ion-icon>
+        Profile
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>
+

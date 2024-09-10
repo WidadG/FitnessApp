@@ -24,7 +24,14 @@ const routes: Routes = [
   {
     path: 'entrenamiento',
     loadChildren: () => import('./page/main/entrenamiento/entrenamiento.module').then(m => m.EntrenamientoPageModule)
-  }, 
+  },   {
+    path: 'entrenando',
+    loadChildren: () => import('./page/main/entrenamiento/entrenando/entrenando.module').then(m => m.EntrenandoPageModule)
+  },   {
+    path: 'historial-entrenamientos',
+    loadChildren: () => import('./page/main/entrenamiento/historial-entrenamientos/historial-entrenamientos-routing.module').then(m => m.HistorialEntrenamientosPageRoutingModule)
+  },
+
 ];
 
 @NgModule({

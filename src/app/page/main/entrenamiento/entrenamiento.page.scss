@@ -1,135 +1,83 @@
-/* Variables de color basadas en la imagen proporcionada */
-$primary-color: #FF4081; /* Color rosa principal */
-$secondary-color: #FFC107; /* Color amarillo secundario */
-$background-color: #F5F5F5; /* Color de fondo */
-$text-color: #333333; /* Color del texto */
-$highlight-color: #00BCD4; /* Color azul para resaltar */
-
-/* Estilo general del contenido */
 ion-content {
-  --background: $background-color;
+  --background: #f7f8fa;
   padding: 16px;
-  ion-header ion-toolbar ion-title {
-  color: $text-color;  /* Asegúrate de que esto contraste con el fondo */
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-}
 
   ion-card {
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: white;
     margin-bottom: 20px;
-  }
-
-  ion-card-header {
-    background-color: $primary-color;
-    border-radius: 20px 20px 0 0;
-    color: white;
-    text-align: center;
-    padding: 20px 16px;
-
-    ion-card-title {
-      font-size: 24px;
-      font-weight: bold;
+    ion-card-header {
+      background-color: #f0f0f0;
+      border-radius: 20px 20px 0 0;
+      color: #333;
+      padding: 10px 16px;
+    }
+    ion-card-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 
-  ion-card-content {
-    padding: 16px;
+  ion-item {
+    --background: white;
+    --border-color: #e0e0e0;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 
-    ion-list {
-      background-color: white;
+    &:hover {
+      transform: scale(1.02);
+    }
 
-      ion-item {
-        --background: white;
-        --border-color: #e0e0e0;
-        margin-bottom: 10px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.2s;
+    ion-thumbnail {
+      border-radius: 10px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
 
-        &:hover {
-          transform: scale(1.02);
-        }
+    ion-label {
+      font-size: 16px;
+      color: #333;
 
-        ion-thumbnail {
-          border-radius: 10px;
-          overflow: hidden;
+      h2 {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
 
-          img {
-            width: 100%;
-            height: auto;
-          }
-        }
+      p {
+        font-size: 14px;
+        color: #666;
+      }
+    }
 
-        ion-label {
-          font-size: 16px;
-          color: $text-color;
+    ion-button {
+      --background: #6c63ff;
+      --color: white;
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 10px;
 
-          h2 {
-            font-weight: bold;
-            margin-bottom: 5px;
-          }
-
-          p {
-            font-size: 14px;
-            color: $secondary-color;
-          }
-        }
-
-        ion-button {
-          --background: $highlight-color;
-          --color: #FF4081;
-          font-size: 14px;
-          padding: 6px 12px;
-          border-radius: 10px;
-
-          &:hover {
-            --background: darken($highlight-color, 10%);
-          }
-          &.button-outline {
-            --border-width: 0;
-            --background: $highlight-color;
-            --color: #FF4081;
-          }
-        }
+      &:hover {
+        --background: darken(#6c63ff, 10%);
       }
     }
   }
-}
 
-/* Estilo del iframe para mostrar el video */
-iframe {
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-}
+  ion-button {
+    margin-top: 20px;
+    --background: #6c63ff;
+    --color: white;
+    font-size: 16px;
+    padding: 14px;
+    border-radius: 30px;
 
-/* Estilo específico para la fase menstrual */
-.fase-title {
-  background-color: $secondary-color;
-  color: white;
-  border-radius: 20px;
-  padding: 10px 16px;
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Estilo para la sección de video seleccionado */
-.selected-video {
-  background-color: white;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  h2 {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    color: $text-color;
+    &:hover {
+      --background: darken(#6c63ff, 10%);
+    }
   }
 }
+

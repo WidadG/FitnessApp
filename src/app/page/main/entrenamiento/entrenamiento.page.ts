@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { VideoService, Video } from 'src/app/services/video.servise';
-import { TrainingService } from 'src/app/services/training.service'; // Importa el TrainingService
-
-
+import { TrainingService } from 'src/app/services/training.service'; 
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-entrenamiento',
@@ -17,15 +16,20 @@ export class EntrenamientoPage implements OnInit {
   personalizedExercises: Video[] = []; // Array de videos filtrados por musculo
   selectedVideo: Video | null = null;
   videoUrl: any;
-  entrenamiento: any; // Variable para almacenar el entrenamiento devuelto por el TrainingService
+  entrenamiento: any; 
+  startTime: Date; // Almacenar la hora de inicio del entrenamiento
+
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private videoService: VideoService,
     public sanitizer: DomSanitizer,
-    private trainingService: TrainingService, // Inyecta el TrainingService
+    private trainingService: TrainingService,
+    private afAuth: AngularFireAuth // Para obtener el userId
   ) {}
 
   ngOnInit() {
+
     // Obtener la fase menstrual desde los parámetros de la URL
     this.route.queryParams.subscribe(params => {
       this.faseMenstrual = params['fase'];
@@ -34,25 +38,27 @@ export class EntrenamientoPage implements OnInit {
     });
   }
 
+  //Funcion que genera entrenamiento
   loadPersonalizedExercises() {
     this.videoService.getVideos().subscribe((videos) => {
-        console.log(videos); // Ver datos en la consola
-
-        // Filtra los videos basados en los ejercicios devueltos por el TrainingService
-        this.personalizedExercises = videos.filter(video =>
-            this.entrenamiento.ejercicios.includes(video.musculo)
-        );
-
-        console.log(this.personalizedExercises); // Verifica los ejercicios filtrados
+      // Filtra los videos basados en los ejercicios devueltos por el TrainingService
+      this.personalizedExercises = videos.filter(video =>
+        this.entrenamiento.ejercicios.includes(video.musculo)
+      );
     });
   }
 
-
-
-  toggleDetails(exercise: Video) {
-    exercise.desplegarVideo = !exercise.desplegarVideo;
+  startTraining() {
+    // Redirigir a la página de "Entrenando" y pasar los ejercicios
+    this.router.navigate(['/main/entrenamiento/entrenando'], {
+      queryParams: {
+        exercises: JSON.stringify(this.personalizedExercises)
+      }
+    });
   }
+
   playVideo(video: Video) {
-    this.selectedVideo = video;  // Guarda el video seleccionado
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(video.url.replace("watch?v=", "embed/"));}
+    this.selectedVideo = video;  
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(video.url.replace("watch?v=", "embed/"));
+  }
 }

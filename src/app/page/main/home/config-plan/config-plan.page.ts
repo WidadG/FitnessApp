@@ -16,6 +16,7 @@ export class ConfigPlanPage implements OnInit {
     goals: '',
     inicioCiclo: '',
     faseMenstrual: '',
+    modoEntrenamiento: '',
     diasEntrenamiento: 3 // Valor predeterminado de 3 días
   };
 

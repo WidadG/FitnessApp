@@ -3,47 +3,55 @@
     <ion-buttons slot="start">
       <ion-back-button text="" defaultHref="/main/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Entrenamiento Personalizado</ion-title>
+    <ion-title>Proximo Entrenamiento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card *ngIf="personalizedExercises.length > 0; else noExercises">
+
+  <!-- Sección de músculos a entrenar -->
+  <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ faseMenstrual }}</ion-card-title>
+      <ion-card-title>Músculos a entrenar</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let video of personalizedExercises">
-          <ion-thumbnail slot="start">
-            <img [src]="video.thumbnail || 'assets/default-thumbnail.jpg'" alt="{{video.titulo}}">
-          </ion-thumbnail>
-          <ion-label>
-            <h2>{{ video.titulo }}</h2>
-            <p>{{ video.descripcion }}</p>
-          </ion-label>
-          <ion-button fill="outline" slot="end" (click)="playVideo(video)">
-            Ver Video
-          </ion-button>
-        </ion-item>
-      </ion-list>
-
-      <!-- Aquí se muestra el video si uno está seleccionado -->
-      <div *ngIf="selectedVideo">
-        <h2>{{ selectedVideo.titulo }}</h2>
-        <iframe width="100%" height="315" [src]="videoUrl" frameborder="0" allowfullscreen></iframe>
-      </div>
+      <!-- Aquí se mostrarían los músculos (puedes usar imágenes o íconos) -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <img src="ruta_a_imagen_musculo_1" alt="Musculo 1">
+          </ion-col>
+          <ion-col>
+            <img src="ruta_a_imagen_musculo_2" alt="Musculo 2">
+          </ion-col>
+          <ion-col>
+            <img src="ruta_a_imagen_musculo_3" alt="Musculo 3">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-card-content>
   </ion-card>
 
-  <ng-template #noExercises>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Sin ejercicios disponibles</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        No se encontraron ejercicios para la fase menstrual actual.
-      </ion-card-content>
-    </ion-card>
-  </ng-template>
+  <!-- Lista de ejercicios -->
+  <ion-list>
+    <ion-item *ngFor="let ejercicio of personalizedExercises">
+      <ion-thumbnail slot="start">
+        <img [src]="ejercicio.thumbnail || 'assets/default-thumbnail.jpg'" alt="{{ ejercicio.titulo }}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ ejercicio.titulo }}</h2>
+        <p>{{ ejercicio.series }} series - {{ ejercicio.reps }} reps</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón para comenzar entrenamiento -->
+  <ion-button expand="full" (click)="startTraining()">COMENZAR ENTRENAMIENTO</ion-button>
+
+
+
+
+  <!-- Botón para finalizar entrenamiento 
+  <ion-button expand="full" color="danger" (click)="finishTraining()">FINALIZAR ENTRENAMIENTO</ion-button>-->
+
 </ion-content>

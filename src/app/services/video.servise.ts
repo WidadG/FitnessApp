@@ -10,11 +10,22 @@ export interface Video {
   musculo: string;
   desplegarVideo?: boolean;
   thumbnail?: string;
+  series: number;
+  reps: number;
+  sets?: Set[];
+}
+export interface Set {
+  anterior: string;
+  kg: number;
+  reps: number;
+  completed: boolean;
 }
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class VideoService {
   private collectionName = 'videoEjercicio';
 
@@ -36,4 +47,6 @@ export class VideoService {
   updateVideo(id: string, video: Video): Promise<void> {
     return this.firestore.collection(this.collectionName).doc(id).update(video);
   }
+
+  
 }
