@@ -1,0 +1,33 @@
+ion-router-outlet {
+  /* Ocupar toda la altura disponible */
+  height: 100%;
+}
+
+ion-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Asegurar que el contenedor ocupe toda la altura de la ventana */
+}
+
+ion-content {
+  flex-grow: 1; /* El contenido debe crecer para ocupar el espacio restante */
+}
+
+ion-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: space-around; /* Distribuye los botones de manera equidistante */
+  width: 100%;
+}
+
+.footer-buttons ion-button {
+  --background: transparent; /* Fondo transparente */
+  --color: grey; /* Color del texto y del icono */
+  padding: 10px;
+}
