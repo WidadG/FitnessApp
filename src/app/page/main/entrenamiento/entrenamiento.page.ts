@@ -18,6 +18,8 @@ export class EntrenamientoPage implements OnInit {
   videoUrl: any;
   entrenamiento: any; 
   startTime: Date; // Almacenar la hora de inicio del entrenamiento
+  modoEntrenamiento: string;
+  diasEntrenamiento: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,23 +32,36 @@ export class EntrenamientoPage implements OnInit {
 
   ngOnInit() {
 
-    // Obtener la fase menstrual desde los parámetros de la URL
-    this.route.queryParams.subscribe(params => {
-      this.faseMenstrual = params['fase'];
-      this.entrenamiento = this.trainingService.getEntrenamientoPorFase(this.faseMenstrual);
-      this.loadPersonalizedExercises();
-    });
-  }
+  //   // Obtener la fase menstrual desde los parámetros de la URL
+  //   this.route.queryParams.subscribe(params => {
+  //     this.faseMenstrual = params['fase'];
+  //     this.entrenamiento = this.trainingService.getEntrenamientoPorFase(this.faseMenstrual);
+  //     this.loadPersonalizedExercises();
+  //   });
+  // }
 
-  //Funcion que genera entrenamiento
-  loadPersonalizedExercises() {
-    this.videoService.getVideos().subscribe((videos) => {
-      // Filtra los videos basados en los ejercicios devueltos por el TrainingService
-      this.personalizedExercises = videos.filter(video =>
-        this.entrenamiento.ejercicios.includes(video.musculo)
-      );
+  // //Funcion que genera entrenamiento
+  // loadPersonalizedExercises() {
+  //   this.videoService.getVideos().subscribe((videos) => {
+  //     // Filtra los videos basados en los ejercicios devueltos por el TrainingService
+  //     this.personalizedExercises = videos.filter(video =>
+  //       this.entrenamiento.ejercicios.includes(video.musculo)
+  //     );
+  //   });
+  // }
+
+  // Obtener los parámetros de la URL, como la fase menstrual, modo de entrenamiento y días de entrenamiento
+  this.route.queryParams.subscribe(params => {
+    this.faseMenstrual = params['fase'];
+    this.modoEntrenamiento = params['modoEntrenamiento'];
+    this.diasEntrenamiento = params['diasEntrenamiento'];
+    // Obtener los parámetros de la URL, como la fase menstrual, modo de entrenamiento y días de entrenamiento
+    // Generar la rutina personalizada
+    this.trainingService.getRoutine(this.modoEntrenamiento, this.diasEntrenamiento, this.faseMenstrual).subscribe(exercises => {
+      this.personalizedExercises = exercises;
     });
-  }
+  });
+}  
 
   startTraining() {
     // Redirigir a la página de "Entrenando" y pasar los ejercicios

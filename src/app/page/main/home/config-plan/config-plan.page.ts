@@ -21,6 +21,7 @@ export class ConfigPlanPage implements OnInit {
   };
 
   faseMenstrual: string = '';
+  modoEntrenamiento: string = '';
 
   constructor(private firebaseService: FirebaseService, private router: Router) {}
 
@@ -58,12 +59,13 @@ export class ConfigPlanPage implements OnInit {
       // Recalcular la fase menstrual antes de guardar los datos
       this.calcularFaseMenstrual();
   
-      // Añadir la fase menstrual a los datos del usuario
+      // Añadir la fase menstrual y el modo de entrenamiento a los datos del usuario
       this.personalData.faseMenstrual = this.faseMenstrual;
+      this.personalData.modoEntrenamiento = this.modoEntrenamiento;
   
       this.firebaseService.setDocument(`users/${userId}`, this.personalData).then(() => {
         console.log('Los datos se han subido exitosamente');
-        this.router.navigate(['./entrenamiento'], { queryParams: { fase: this.faseMenstrual } });
+        this.router.navigate(['./entrenamiento'], { queryParams: { fase: this.faseMenstrual, modoEntrenamiento: this.personalData.modoEntrenamiento } });
       }).catch((error) => {
         console.error('Error al subir los datos:', error);
       });

@@ -32,6 +32,11 @@
     </ion-card-content>
   </ion-card>
 
+
+
+<ion-content class="ion-padding">
+    <!-- Botón para comenzar entrenamiento -->
+  <ion-button expand="full" (click)="startTraining()">COMENZAR ENTRENAMIENTO</ion-button>
   <!-- Lista de ejercicios -->
   <ion-list>
     <ion-item *ngFor="let ejercicio of personalizedExercises">
@@ -45,8 +50,8 @@
     </ion-item>
   </ion-list>
 
-  <!-- Botón para comenzar entrenamiento -->
-  <ion-button expand="full" (click)="startTraining()">COMENZAR ENTRENAMIENTO</ion-button>
+
+</ion-content>
 
 
 

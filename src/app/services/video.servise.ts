@@ -1,22 +1,24 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { Observable } from "rxjs";
+import { combineLatest } from "rxjs";
+import { map } from "rxjs/operators";
 
 export interface Video {
-  id?: string;             // ID del video
-  titulo: string;          // Título del video
-  url: string;             // URL del video
-  descripcion?: string;    // Descripción del video
-  musculo: string;         // Músculo que trabaja el video
-  thumbnail?: string;      // URL de la imagen en miniatura
-  grupo?: string;          // Grupo (opcional)
-  tren?: string;           // Tren (opcional)
-  series?: number;         // Número de series (opcional)
-  reps?: number;           // Número de repeticiones (opcional)
-  sets?: Set[];            // Sets realizados en el ejercicio (opcional)
-  desplegarVideo?: boolean; // Estado para desplegar o no el video (opcional)
+  id?: string;
+  titulo: string;
+  url: string;
+  descripcion?: string;
+  musculo: string;
+  desplegarVideo?: boolean;
+  thumbnail?: string;
+  series: number;
+  reps: number;
+  sets?: Set[];
+  tren?: string;
+  grupo?: string;
+  kg?: number;
 }
-
 export interface Set {
   anterior: string;
   kg: number;
@@ -30,27 +32,44 @@ export interface Set {
 
 
 export class VideoService {
-  private collectionName = 'videoEjercicio'; // Nombre de la colección en Firebase
+  private collectionName = 'videoEjercicio';
 
   constructor(private firestore: AngularFirestore) { }
 
-    // Obtener todos los videos
   getVideos(): Observable<Video[]> {
     return this.firestore.collection<Video>(this.collectionName).valueChanges({ idField: 'id' });
   }
 
-  // Añadir un nuevo video a la colección
+  // Obtener ejercicios por grupo y tren para el modo Jalar, Empujar y Piernas
+  getVideosByGroupAndTren(group: string, tren: string): Observable<Video[]> {
+    return this.firestore.collection<Video>(this.collectionName, ref =>
+      ref.where('grupo', '==', group).where('tren', '==', tren)
+    ).valueChanges();
+  }
+
+  // Obtener ejercicios para cuerpo completo
+  getVideosForCuerpoCompleto(): Observable<Video[]> {
+    return this.firestore.collection<Video>(this.collectionName, ref =>
+      ref.where('tren', 'in', ['superior', 'inferior'])
+    ).valueChanges();
+  }
+
+  // Obtener ejercicios por tren para el modo superior/inferior
+  getVideosByTren(tren: string): Observable<Video[]> {
+    return this.firestore.collection<Video>(this.collectionName, ref =>
+      ref.where('tren', '==', tren)
+    ).valueChanges();
+  }
+
   addVideo(video: Video): Promise<void> {
     const id = this.firestore.createId();
     return this.firestore.collection(this.collectionName).doc(id).set({ ...video, id });
   }
 
-  // Eliminar un video por su ID
   deleteVideo(id: string): Promise<void> {
     return this.firestore.collection(this.collectionName).doc(id).delete();
   }
 
-  // Actualizar un video por su ID
   updateVideo(id: string, video: Video): Promise<void> {
     return this.firestore.collection(this.collectionName).doc(id).update(video);
   }
