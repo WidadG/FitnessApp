@@ -8,7 +8,7 @@
   <ion-list>
     <ion-item *ngFor="let entrenamiento of entrenamientos">
       <ion-label>
-        <h2>{{ entrenamiento.endTime | date:'short' }}</h2>
+        <h2>{{ entrenamiento.endTime.toDate() | date:'short' }}</h2> <!--Conversion de formato fecha de firebase a javascript-->
         <p>Fase: {{ entrenamiento.faseMenstrual }}</p>
         <p>Duración: {{ entrenamiento.duration | number:'1.0-0' }} segundos</p>
       </ion-label>

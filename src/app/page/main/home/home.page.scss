@@ -3,11 +3,11 @@ $primary-color: hsl(340, 100%, 63%);  /* Rosa */
 $secondary-color: #FFC107; /* Amarillo */
 $background-color: #F5F5F5; /* Fondo claro */
 $text-color: #333333; /* Texto oscuro */
-$highlight-color: #00BCD4; /* Azul para acentos */
+$highlight-color: #93efd8; /* Azul para acentos */
 
 ion-header {
   ion-toolbar {
-    background-color: rgb(255, 242, 102);
+    background-color: $primary-color;
     ion-title {
       color: $text-color;
       font-size: 24px;
@@ -21,6 +21,10 @@ ion-header {
       font-size: 14px;
       padding: 6px 12px;
     }
+    ion-button {
+      --background: transparent;
+      --color: white;
+    }
   }
 }
 
@@ -32,25 +36,26 @@ ion-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
   }
 
-  .cycle-card {
+  .cycle-card { /* Tarjeta que indica el dia del ciclo y etapa */
     background-color: $primary-color;
-    border-radius: 20px;
-    padding: 20px;
+    border-radius: 15px; /* Reducir un poco el borde redondeado */
+    padding: 10px;  /* Disminuir el padding para hacer la tarjeta más compacta */
     color: white;
     text-align: center;
     margin-bottom: 20px;
-    width: 90%;
+    width: 80%; /* Reducir el ancho de la tarjeta */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     h2 {
-      font-size: 24px;
+      font-size: 12px; /* Reducir el tamaño del texto */
       font-weight: bold;
     }
 
     h3 {
-      font-size: 18px;
+      font-size: 14px; /* Reducir el tamaño del subtítulo */
       margin-bottom: 15px;
     }
 
@@ -60,12 +65,42 @@ ion-content {
       font-weight: bold;
     }
   }
+  .training-card { /* Tarjeta que indica el proximo entrenamiento */
+    position: relative;
+    width: 100%;
+    height: 150px;
+    background-color: $secondary-color;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+  }
 
   .insights-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    width: 90%;
+    grid-template-columns: repeat(2, 1fr);  /* Dos columnas de igual tamaño */
+    gap: 10px;  /* Espacio entre las tarjetas */
+    width: 100%;  /* Asegura que use el 100% del espacio disponible */
+    justify-items: center;  /* Centra las tarjetas en cada columna */
   }
 
   .insight-card {
@@ -74,6 +109,13 @@ ion-content {
     padding: 16px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;  /* Asegura que todas las tarjetas ocupen el mismo ancho */
+    max-width: 150px;  /* Limita el ancho máximo de las tarjetas */
+    height: 150px;  /* Asegura que todas las tarjetas tengan la misma altura */
 
     h4 {
       font-size: 16px;
@@ -92,43 +134,29 @@ ion-content {
       width: 100%;
       height: auto;
     }
-  }
-  /* ... (resto del CSS que ya tienes) ... */
 
-.insight-card {
-  background-color: white;
-  border-radius: 20px;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  h4 {
-    font-size: 16px;
-    font-weight: bold;
-    color: $primary-color;
-    margin-bottom: 10px;
+    .card-button {
+      --background: $primary-color;
+      --color: hsl(340, 100%, 63%);
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 12px;
+      width: 100%;
+    }
   }
 
-  p {
-    font-size: 14px;
-    color: $text-color;
-  }
-
-  img {
-    border-radius: 10px;
-    width: 100%;
-    height: auto;
-  }
-
-  .card-button {
-    --background: $primary-color;
-    --color: hsl(340, 100%, 63%);
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 12px;
-    width: 100%;
+  /* Estilo especial para la tarjeta del botón de entrenamiento */
+  .insight-card.entrenamientos {
+    grid-column: span 2; /* Hace que esta tarjeta ocupe el ancho de dos columnas */
+    max-width: 90%;     /* Se asegura que use todo el espacio disponible */
+    background-color: $highlight-color;
+    ion-button {
+      --background: white;
+      --color: $highlight-color;
+    }
   }
 }
 
-}
+
+

@@ -21,11 +21,15 @@
       </ion-button> -->
     </div>
     
-    <div class="card">
-      <h2>Próximo Entrenamiento</h2>
-      <img src="assets/imagenes/estiramiento.jpg" alt="Entrenamiento">
-    </div>
-    
+    <ion-router-link routerLink="/main/entrenamiento">
+      <div class="card training-card">
+        <img src="assets/imagenes/estiramiento.jpg" alt="Entrenamiento">
+        <div class="overlay">
+          <h3>Próximo Entrenamiento</h3> <!-- Botón para ir a entrenamientos -->
+        </div>
+      </div>
+    </ion-router-link>
+
     <!-- Tarjetas de insights y botones -->
     <div class="insights-container">
       <div class="insight-card">
@@ -44,11 +48,11 @@
         <h4>Consejos</h4>
         <p>{{ consejos }}</p>
       </div>
-      <div class="insight-card">
+      <div class="insight-card entrenamientos">
         <h4></h4>
-        <ion-button expand="block" class="card-button" routerLink="/main/entrenamiento">
+        <ion-button expand="block" class="card-button" routerLink="/main/entrenamiento/historial-entrenamientos">
           <ion-icon name="fitness-outline"></ion-icon>
-          Entrenamiento 
+          Historial de Entrenamientos 
         </ion-button>
       </div>
       
