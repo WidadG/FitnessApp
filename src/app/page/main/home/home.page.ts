@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.loadFaseMenstrual(); // Cargar la fase menstrual al iniciar la página
-    this.loadMaxReps();       // Cargar el récord de repeticiones
+    this.loadMaxReps();       // Cargar el récord de repeticionesz
   }
 
   // Método para cargar el récord de repeticiones

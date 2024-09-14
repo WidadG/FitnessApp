@@ -4,33 +4,36 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- Foto de perfil -->
 <ion-content>
   <div class="profile-container">
-    <img src="assets/avatar.png" alt="Avatar" class="profile-avatar" />
+    <img [src]="user.profileImage || 'assets/avatar.png'" alt="Avatar" class="profile-avatar" />
     <h2 class="profile-name">{{ user.displayName }}</h2>
 
-    <!-- edad -->
+    <!-- Edad -->
     <ion-item>
       <ion-label position="floating">Edad</ion-label>
       <ion-input [(ngModel)]="user.age" type="number" readonly></ion-input>
     </ion-item>
 
-<!-- Peso -->
+    <!-- Peso -->
     <ion-item>
       <ion-label position="floating">Peso</ion-label>
       <ion-input [(ngModel)]="user.weight" type="number" readonly></ion-input>
     </ion-item>
 
-<!-- Entrenamientos rendidos -->
+    <!-- Entrenamientos rendidos -->
     <div class="profile-stats">
       <p>Entrenamientos</p>
       <ion-progress-bar value="0.6"></ion-progress-bar>
       <p>3/5 días</p>
     </div>
 
-    <!-- Botón de Cerrar Sesión -->
-    <ion-button expand="full" color="danger" (click)="signOut()">Cerrar Sesión</ion-button>
+    <!-- Botón para subir imagen -->
+    <ion-button expand="full" class="subir-imagen" (click)="uploadProfileImage()">Subir Imagen</ion-button>
+
+    <!-- Botón para cerrar sesión -->
+    <ion-button expand="full" class="cerrar-sesion" (click)="signOut()">Cerrar Sesión</ion-button>
   </div>
 </ion-content>
+
 

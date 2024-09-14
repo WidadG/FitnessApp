@@ -5,7 +5,7 @@ import { User } from '../models/user.models';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
-
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 
 
@@ -13,6 +13,7 @@ import { UtilsService } from './utils.service';
   providedIn: 'root'
 })
 export class FirebaseService {
+  
 
   auth = inject(AngularFireAuth);
 
@@ -72,6 +73,31 @@ async getConsejoByFase(fase: string) {
   } else {
     return null;
   }
+}
+
+// Método para cargar imagen a Firebase Storage
+async uploadProfileImage(file: File, userId: string): Promise<string> {
+  const storage = getStorage();
+  const storageRef = ref(storage, `profileImages/${userId}`);
+  
+  const uploadTask = uploadBytesResumable(storageRef, file);
+  return new Promise((resolve, reject) => {
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        // Aquí puedes manejar el progreso de la carga si es necesario
+      },
+      (error) => {
+        // Error durante la carga
+        reject(error);
+      },
+      async () => {
+        // Carga completada, obtener URL de descarga
+        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+        resolve(downloadURL);
+      }
+    );
+  });
 }
 
 }

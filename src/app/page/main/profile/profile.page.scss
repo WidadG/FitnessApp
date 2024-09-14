@@ -1,34 +1,48 @@
 .profile-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .profile-avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  
-  .profile-name {
-    margin: 10px 0;
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-  
-  .profile-stats {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .profile-stats p {
-    margin: 5px 0;
-  }
-  
-  ion-button {
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile-name {
+  margin: 10px 0;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.profile-stats {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.profile-stats p {
+  margin: 5px 0;
+}
+
+ion-button {
+  margin-top: 20px;
+}
+
+ion-button.subir-imagen {
+  --background: #6c63ff; /* Color del botón Subir Imagen */
+  --color: white; /* Texto en blanco */
+  border: 2px solid #6c63ff; /* Borde rojo */
+}
+
+ion-button.cerrar-sesion {
+  --background: transparent; /* Fondo transparente */
+  --color: red; /* Texto en rojo para el botón Cerrar Sesión */
+  border: 2px solid red; /* Borde rojo */
+  border-radius: 8px; /* Borde redondeado */
+}
+
+
   
   
