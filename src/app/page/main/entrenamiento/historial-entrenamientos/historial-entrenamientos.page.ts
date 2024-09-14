@@ -16,7 +16,8 @@ export class HistorialEntrenamientosPage implements OnInit {
     this.afAuth.user.subscribe(user => {
       if (user) {
         this.trainingService.getEntrenamientos(user.uid).subscribe((entrenamientos) => {
-          this.entrenamientos = entrenamientos;
+          // Ordenar entrenamientos por endTime en orden descendente
+          this.entrenamientos = entrenamientos.sort((a, b) => b.endTime.toDate().getTime() - a.endTime.toDate().getTime());
         });
       }
     });

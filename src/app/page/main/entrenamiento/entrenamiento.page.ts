@@ -57,8 +57,12 @@ export class EntrenamientoPage implements OnInit {
     this.diasEntrenamiento = params['diasEntrenamiento'];
     // Obtener los parámetros de la URL, como la fase menstrual, modo de entrenamiento y días de entrenamiento
     // Generar la rutina personalizada
-    this.trainingService.getRoutine(this.modoEntrenamiento, this.diasEntrenamiento, this.faseMenstrual).subscribe(exercises => {
-      this.personalizedExercises = exercises;
+    this.afAuth.user.subscribe(user => {
+      if (user) {
+        this.trainingService.getNextTraining(user.uid).subscribe(exercises => {
+          this.personalizedExercises = exercises;
+        });
+      }
     });
   });
 }  
@@ -67,7 +71,8 @@ export class EntrenamientoPage implements OnInit {
     // Redirigir a la página de "Entrenando" y pasar los ejercicios
     this.router.navigate(['/main/entrenamiento/entrenando'], {
       queryParams: {
-        exercises: JSON.stringify(this.personalizedExercises)
+        exercises: JSON.stringify(this.personalizedExercises),
+        faseMenstrual: this.faseMenstrual
       }
     });
   }

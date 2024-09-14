@@ -61,7 +61,7 @@ export class ConfigPlanPage implements OnInit {
   
       // Añadir la fase menstrual y el modo de entrenamiento a los datos del usuario
       this.personalData.faseMenstrual = this.faseMenstrual;
-      this.personalData.modoEntrenamiento = this.modoEntrenamiento;
+      //this.personalData.modoEntrenamiento = this.modoEntrenamiento;
   
       this.firebaseService.setDocument(`users/${userId}`, this.personalData).then(() => {
         console.log('Los datos se han subido exitosamente');

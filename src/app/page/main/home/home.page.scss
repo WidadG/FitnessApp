@@ -1,5 +1,5 @@
 /* Variables de color */
-$primary-color: hsl(340, 100%, 63%);  /* Rosa */
+$primary-color: hsl(272, 90%, 60%);  /* Rosa */
 $secondary-color: #FFC107; /* Amarillo */
 $background-color: #F5F5F5; /* Fondo claro */
 $text-color: #333333; /* Texto oscuro */
@@ -7,9 +7,9 @@ $highlight-color: #93efd8; /* Azul para acentos */
 
 ion-header {
   ion-toolbar {
-    background-color: $primary-color;
+    background-color: hsl(272, 90%, 60%) !important;
     ion-title {
-      color: $text-color;
+      color: white;
       font-size: 24px;
       font-weight: bold;
       text-align: left;
@@ -22,8 +22,12 @@ ion-header {
       padding: 6px 12px;
     }
     ion-button {
-      --background: transparent;
-      --color: white;
+      --background: transparent; /* Fondo transparente */
+      --color: white; /* Asegura que el texto sea blanco para que sea visible */
+      border: 1px solid white; /* Opcional: Si quieres agregar un borde blanco */
+      border-radius: 10px;
+      font-size: 14px;
+      padding: 6px 12px;
     }
   }
 }
@@ -48,6 +52,7 @@ ion-content {
     margin-bottom: 20px;
     width: 80%; /* Reducir el ancho de la tarjeta */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Añade espacio superior para separar del toolbar */
 
     h2 {
       font-size: 12px; /* Reducir el tamaño del texto */
@@ -99,7 +104,7 @@ ion-content {
     display: grid;
     grid-template-columns: repeat(2, 1fr);  /* Dos columnas de igual tamaño */
     gap: 10px;  /* Espacio entre las tarjetas */
-    width: 100%;  /* Asegura que use el 100% del espacio disponible */
+    width: 80%;  /* Asegura que use el 100% del espacio disponible */
     justify-items: center;  /* Centra las tarjetas en cada columna */
   }
 
@@ -137,7 +142,7 @@ ion-content {
 
     .card-button {
       --background: $primary-color;
-      --color: hsl(340, 100%, 63%);
+      --color: hsl(272, 90%, 60%);
       border-radius: 10px;
       font-weight: bold;
       font-size: 16px;
@@ -156,6 +161,19 @@ ion-content {
       --color: $highlight-color;
     }
   }
+
+    /* Botón fuera de la tarjeta */
+    .historial-button {
+      --background: hsl(272, 90%, 60%); /* Aplicar el color primario al botón */
+      --color: white; /* Texto en blanco */
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 12px;
+      margin-top: 20px; /* Espacio extra entre el botón y los elementos superiores */
+      width: 100%; /* Asegura que el botón sea del ancho completo */
+      max-width: 300px; /* Puedes limitar el ancho máximo si prefieres */
+    }
 }
 
 

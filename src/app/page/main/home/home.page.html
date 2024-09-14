@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar style="--background: hsl(272, 90%, 60%); --color: white;">
     <ion-title>WomanFit</ion-title>
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/main/home/config-plan']">
@@ -38,7 +38,7 @@
       </div>
       <div class="insight-card">
         <h4>Series</h4>
-        <p>{{ series }} series</p>
+        <p>{{ maxReps }} reps</p>
       </div>
       <div class="insight-card">
         <h4>Fuerza</h4>
@@ -48,39 +48,16 @@
         <h4>Consejos</h4>
         <p>{{ consejos }}</p>
       </div>
-      <div class="insight-card entrenamientos">
-        <h4></h4>
-        <ion-button expand="block" class="card-button" routerLink="/main/entrenamiento/historial-entrenamientos">
-          <ion-icon name="fitness-outline"></ion-icon>
-          Historial de Entrenamientos 
-        </ion-button>
-      </div>
-      
     </div>
+
+
+  <!-- Botón de Historial de Entrenamientos fuera de la tarjeta -->    
+    <ion-button expand="block" class="historial-button" routerLink="/main/entrenamiento/historial-entrenamientos">
+      <ion-icon name="fitness-outline"></ion-icon>
+      Historial de Entrenamientos 
+    </ion-button>
+    
     
   </div>
 </ion-content>
 
-<!-- Navegación inferior -->
-<ion-footer>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button routerLink="/main/home">
-        <ion-icon name="home"></ion-icon>
-        Home
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button routerLink="/main/buscar-ejercicio">
-        <ion-icon name="search"></ion-icon>
-        Buscar
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/main/profile">
-        <ion-icon name="person"></ion-icon>
-        Profile
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-footer>

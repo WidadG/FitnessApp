@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar style="--background: hsl(272, 90%, 60%); --color: white;">
     <ion-buttons slot="start">
       <ion-back-button text="" defaultHref="/main/entrenamiento"></ion-back-button>
     </ion-buttons>
@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content>
 
 
 
@@ -21,6 +21,7 @@
       <ion-item slot="content">
         <iframe width="100%" height="315" [src]="getSafeUrl(ejercicio.url)" frameborder="0" allowfullscreen></iframe>
       </ion-item>
+      <!-- Sección para agregar sets -->
       <ion-item slot="content">
         <ion-grid>
           <ion-row>
@@ -30,6 +31,7 @@
             <ion-col size="2">Reps</ion-col>
             <ion-col size="1">✔</ion-col>
           </ion-row>
+          <!-- Iterar sobre los sets de cada ejercicio -->
           <ion-row *ngFor="let set of ejercicio.sets; let i = index">
             <ion-col size="2">{{ i + 1 }}</ion-col>
             <ion-col size="4"><ion-input [(ngModel)]="set.anterior" type="text" placeholder="12kg x 8"></ion-input></ion-col>
@@ -39,6 +41,7 @@
           </ion-row>
         </ion-grid>
 
+        <!-- Botón para agregar más sets -->
         <ion-button expand="block" (click)="addSet(ejercicio)">Agregar Set</ion-button>
       </ion-item>
     </ion-accordion>

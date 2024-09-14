@@ -1,6 +1,14 @@
 .button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px; /* Opcional, para añadir espacio superior */
-    margin-bottom: 50px; /* Añade espacio inferior */
-  }
+  display: flex;
+  justify-content: center;
+  margin-top: 50px; /* Opcional, para añadir espacio superior */
+  margin-bottom: 50px; /* Añade espacio inferior */
+}
+
+.custom-button {
+  --background: hsl(272, 90%, 60%); /* Fondo púrpura */
+  --color: white; /* Texto en blanco */
+  width: 100%; /* Ajusta el ancho si lo necesitas */
+  max-width: 300px; /* Limita el ancho máximo del botón */
+  border-radius: 10px; /* Bordes redondeados */
+}

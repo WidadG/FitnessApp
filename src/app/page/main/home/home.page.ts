@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
+import { TrainingService } from 'src/app/services/training.service';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +18,25 @@ export class HomePage implements OnInit {
   series: number = 5; // Series completadas (ejemplo estático)
   fuerza: number = 15; // Fuerza ganada en porcentaje (ejemplo estático)
   consejos: string = 'Cargando...'; // Consejos del día (se actualizará)
+  maxReps: number = 0;
+
+  constructor(private trainingService: TrainingService) {}  // Inyectar el servicio en el constructor
 
   ngOnInit() {
     this.loadFaseMenstrual(); // Cargar la fase menstrual al iniciar la página
+    this.loadMaxReps();       // Cargar el récord de repeticiones
   }
+
+  // Método para cargar el récord de repeticiones
+  async loadMaxReps() {
+    const userId = (await this.firebaseSvc.getAuth().currentUser)?.uid;
+    if (userId) {
+      this.trainingService.getMaxReps(userId).subscribe(maxReps => {
+        this.maxReps = maxReps || 0;  // Asigna el récord o 0 si no existe
+      });
+    }
+  }
+
 
   async loadFaseMenstrual() {
     const userId = (await this.firebaseSvc.getAuth().currentUser)?.uid;

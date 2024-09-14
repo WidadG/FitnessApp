@@ -1,6 +1,7 @@
 ion-router-outlet {
   /* Ocupar toda la altura disponible */
-  height: 100%;
+  height: calc(100% - 56px);
+  --background: white; /* Cambia el fondo a blanco */
 }
 
 ion-app {
@@ -11,6 +12,7 @@ ion-app {
 
 ion-content {
   flex-grow: 1; /* El contenido debe crecer para ocupar el espacio restante */
+  padding-bottom: 56px; /* Ajusta 56px según la altura de tu footer */
 }
 
 ion-footer {
@@ -18,6 +20,8 @@ ion-footer {
   bottom: 0;
   width: 100%;
   z-index: 10;
+  height: 56px; /* Asegura que el footer tenga una altura definida */
+  --background: white; /* Cambia el fondo a blanco */
 }
 
 .footer-buttons {
@@ -28,6 +32,6 @@ ion-footer {
 
 .footer-buttons ion-button {
   --background: transparent; /* Fondo transparente */
-  --color: grey; /* Color del texto y del icono */
+  --color: hsl(272, 90%, 60%); /* Color del texto y del icono */
   padding: 10px;
 }

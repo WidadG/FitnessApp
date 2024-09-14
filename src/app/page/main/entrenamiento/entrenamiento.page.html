@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar style="--background: hsl(272, 90%, 60%); --color: white;">
     <ion-buttons slot="start">
       <ion-back-button text="" defaultHref="/main/home"></ion-back-button>
     </ion-buttons>
@@ -14,18 +14,15 @@
     <ion-card-header>
       <ion-card-title>Músculos a entrenar</ion-card-title>
     </ion-card-header>
+    
+      <!-- Aquí se mostrarían los músculos que se trabajarán(puedes usar imágenes o íconos)-->
     <ion-card-content>
-      <!-- Aquí se mostrarían los músculos (puedes usar imágenes o íconos) -->
       <ion-grid>
         <ion-row>
-          <ion-col>
-            <img src="ruta_a_imagen_musculo_1" alt="Musculo 1">
-          </ion-col>
-          <ion-col>
-            <img src="ruta_a_imagen_musculo_2" alt="Musculo 2">
-          </ion-col>
-          <ion-col>
-            <img src="ruta_a_imagen_musculo_3" alt="Musculo 3">
+          <ion-col *ngFor="let ejercicio of personalizedExercises">
+            <ion-thumbnail>
+              <img [src]="ejercicio.thumbnail || 'assets/default-thumbnail.jpg'" alt="{{ ejercicio.titulo }}">
+            </ion-thumbnail>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -34,9 +31,9 @@
 
 
 
+
 <ion-content class="ion-padding">
-    <!-- Botón para comenzar entrenamiento -->
-  <ion-button expand="full" (click)="startTraining()">COMENZAR ENTRENAMIENTO</ion-button>
+
   <!-- Lista de ejercicios -->
   <ion-list>
     <ion-item *ngFor="let ejercicio of personalizedExercises">
@@ -50,13 +47,12 @@
     </ion-item>
   </ion-list>
 
+  <!-- Botón para comenzar entrenamiento -->
+  <ion-button expand="full" (click)="startTraining()">COMENZAR ENTRENAMIENTO</ion-button>
 
 </ion-content>
 
 
 
-
-  <!-- Botón para finalizar entrenamiento 
-  <ion-button expand="full" color="danger" (click)="finishTraining()">FINALIZAR ENTRENAMIENTO</ion-button>-->
 
 </ion-content>

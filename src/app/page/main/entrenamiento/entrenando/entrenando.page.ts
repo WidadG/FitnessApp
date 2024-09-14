@@ -72,8 +72,18 @@ export class EntrenandoPage implements OnInit {
   finishTraining() {
     const endTime = new Date();
     const duration = (endTime.getTime() - this.startTime.getTime()) / 1000;  // Calculamos la duración en segundos
+
+    // Calcular el máximo de repeticiones en el entrenamiento actual
+    let maxRepsInCurrentTraining = 0;
+    this.personalizedExercises.forEach(ejercicio => {
+      ejercicio.sets.forEach(set => {
+        if (set.reps > maxRepsInCurrentTraining) {
+          maxRepsInCurrentTraining = set.reps;
+        }
+      });
+    });
   
-    // Guardar los datos del entrenamiento
+    // Guardar los datos del entrenamiento pero sólo los sets completados
     const entrenamiento = {
       startTime: this.startTime,
       endTime: endTime,
@@ -81,26 +91,42 @@ export class EntrenandoPage implements OnInit {
       faseMenstrual: this.faseMenstrual,
       ejercicios: this.personalizedExercises.map(ejercicio => ({
         nombre: ejercicio.titulo,
-        sets: ejercicio.sets.map(set => ({
+        sets: ejercicio.sets.filter(set => set.completed).map(set => ({
           anterior: set.anterior,
           kg: set.kg,
           reps: set.reps,
-          completed: set.completed  // Corregido de 'done' a 'completed'
+          completed: set.completed
         }))
-      }))
+      })).filter(ejercicio => ejercicio.sets.length > 0) // Guardar solo los ejercicios con sets completados
     };
   
     // Guardar el entrenamiento en Firebase y redirigir al historial de entrenamientos
     this.afAuth.user.subscribe(user => {
       if (user) {
-        this.trainingService.guardarEntrenamiento(user.uid, entrenamiento)
-          .then(() => {
-            console.log('Entrenamiento guardado exitosamente.');
-            this.router.navigate(['/main/entrenamiento/historial-entrenamientos']);  // Redirigir al historial de entrenamientos
-          })
-          .catch(error => {
-            console.error('Error al guardar el entrenamiento:', error);
-          });
+        this.trainingService.getMaxReps(user.uid).subscribe(maxRepsRecord => {
+          const currentMaxReps = maxRepsRecord || 0;
+  
+          // Comparar y actualizar el récord si es necesario
+          if (maxRepsInCurrentTraining > currentMaxReps) {
+            this.trainingService.updateMaxReps(user.uid, maxRepsInCurrentTraining)
+              .then(() => {
+                console.log('Nuevo récord de repeticiones guardado.');
+              })
+              .catch(error => {
+                console.error('Error al guardar el récord:', error);
+              });
+          }
+
+          //Guardar el entrenamiento
+          this.trainingService.guardarEntrenamiento(user.uid, entrenamiento)
+            .then(() => {
+              console.log('Entrenamiento guardado exitosamente.');
+              this.router.navigate(['/main/entrenamiento/historial-entrenamientos']);  
+            })
+            .catch(error => {
+              console.error('Error al guardar el entrenamiento:', error);
+            });
+        });
       }
     });
   }
