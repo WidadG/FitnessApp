@@ -29,10 +29,18 @@
     </div>
 
     <!-- Botón para subir imagen -->
-    <ion-button expand="full" class="subir-imagen" (click)="uploadProfileImage()">Subir Imagen</ion-button>
+    <ion-button expand="full" class="subir-imagen" (click)="uploadProfileImage()" (keydown.enter)="uploadProfileImage()" (keydown.space)="uploadProfileImage()">Subir Imagen</ion-button>
+
+    <!-- Input oculto para seleccionar la imagen -->
+    <input 
+      type="file" 
+      id="fileInput" 
+      accept="image/*" 
+      style="display: none;" 
+      (change)="onFileSelected($event)">
 
     <!-- Botón para cerrar sesión -->
-    <ion-button expand="full" class="cerrar-sesion" (click)="signOut()">Cerrar Sesión</ion-button>
+    <ion-button expand="full" class="cerrar-sesion" (click)="signOut()" (keydown.enter)="signOut()" (keydown.space)="signOut()">Cerrar Sesión</ion-button>
   </div>
 </ion-content>
 

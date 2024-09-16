@@ -19,7 +19,14 @@
         <ion-label>{{ ejercicio.titulo }}</ion-label>
       </ion-item>
       <ion-item slot="content">
-        <iframe width="100%" height="315" [src]="getSafeUrl(ejercicio.url)" frameborder="0" allowfullscreen></iframe>
+        <iframe 
+          width="100%" 
+          height="315" 
+          [src]="getSafeUrl(ejercicio.url)" 
+          frameborder="0" 
+          allowfullscreen 
+          title="Video de Ejercicio: {{ ejercicio.titulo }}"> <!-- Correcion pedidia por sonarcloud -->
+        </iframe>
       </ion-item>
       <!-- Sección para agregar sets -->
       <ion-item slot="content">
@@ -42,13 +49,13 @@
         </ion-grid>
 
         <!-- Botón para agregar más sets -->
-        <ion-button expand="block" (click)="addSet(ejercicio)">Agregar Set</ion-button>
+        <ion-button expand="block" (click)="addSet(ejercicio)" (keydown.enter)="addSet(ejercicio)" (keydown.space)="addSet(ejercicio)">Agregar Set</ion-button>
       </ion-item>
     </ion-accordion>
   </ion-accordion-group>
   
   <!-- Botón para finalizar entrenamiento -->
-  <ion-button expand="full" color="primary" (click)="finishTraining()">Finalizar Entrenamiento</ion-button>
+  <ion-button expand="full" color="primary" (click)="finishTraining()" (keydown.enter)="finishTraining()" (keydown.space)="finishTraining()">Finalizar Entrenamiento</ion-button>
 
 
 
