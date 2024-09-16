@@ -79,6 +79,15 @@ export class EntrenamientoPage implements OnInit {
 
   playVideo(video: Video) {
     this.selectedVideo = video;  
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(video.url.replace("watch?v=", "embed/"));
+  
+    // Validar que la URL proviene de YouTube
+    if (video.url.startsWith("https://www.youtube.com") || video.url.startsWith("https://youtu.be")) {
+      // Solo si la URL es válida, se permite la conversión y sanitización
+      this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(video.url.replace("watch?v=", "embed/"));
+    } else {
+      // Si la URL no es segura, puedes manejar el error o mostrar un mensaje
+      console.error("URL no segura:", video.url);
+      this.videoUrl = '';  // Asignar un valor vacío o un mensaje de error
+    }
   }
 }

@@ -132,6 +132,11 @@ export class EntrenandoPage implements OnInit {
   }
 
   getSafeUrl(url: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url.replace("watch?v=", "embed/"));
+    if (url.startsWith("https://www.youtube.com") || url.startsWith("https://youtu.be")) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(url.replace("watch?v=", "embed/"));
+    } else {
+      console.error("URL no segura:", url);
+      return '';  // Devuelve una URL vacía o muestra un mensaje de error
+    }
   }
 }
